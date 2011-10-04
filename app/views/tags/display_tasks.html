@@ -1,0 +1,26 @@
+#{ifnot tasks} 
+<p>no tasks</p>
+#{/ifnot}
+
+Task List
+ 
+ <table>
+    <thead>
+        <tr>
+        	<th>Status</th>
+            <th>Task</th>
+            <th>Description</th>
+            <th>Location</th>
+        </tr>
+    </thead>
+    <tbody>
+        #{list items:_tasks, as:'task'}
+            <tr>
+                <td><input type="checkbox" ${task.done ? 'checked' : ''} id="${task.id}"></input></td>
+                <td>${task.title}</td>
+                <td>${task.description}</td>
+                <td>${task.list}</td>             
+            </tr>
+        #{/list}
+    </tbody>
+</table>

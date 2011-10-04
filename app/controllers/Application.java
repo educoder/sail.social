@@ -10,8 +10,9 @@ import models.*;
 public class Application extends Controller {
 
     public static void index() {
-    	System.out.println("Yop");
-        render();
+    	 List<Profile> firstProfile = Profile.findAll();
+         List<Task> allTasks = Task.findAll();
+         render(firstProfile, allTasks);
     }
 
 }

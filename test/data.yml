@@ -1,7 +1,30 @@
 # you describe your data using the YAML notation here
 # and then load them using Fixtures.load("data.yml")
 
-# User(bob):
-#   email: bob@gmail.com
-#   password: secret
-#   fullname: Bob
+User(telsbotUser):
+	username: telsbot
+	password: secret
+	fullname: Tels J. Bot
+	
+Profile(telsbotProfile):
+   user: telsbotUser
+   description: profile of telsbot
+   status: I am telsbot
+   
+Task(T1):
+    user: telsbotUser
+	title: fix circuits
+	description: fixing the memory chip on the flux capacitor
+	list: PRE-VISIT
+	
+Task(T2):
+    user: telsbotUser
+	title: do the robot
+	description: bust a move like a robot does
+	list: VISIT
+	
+Task(T3):
+    user: telsbotUser
+	title: finish memory chip
+	description: connect memory chips to form super robot
+	list: POST-VISIT

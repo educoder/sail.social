@@ -14,6 +14,7 @@ public class Task extends Model {
 	public String title;
 	public String description;
 	public String list;
+	public boolean done;
 	
 	public Date timestamp;
 	

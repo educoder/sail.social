@@ -24,15 +24,19 @@ public class TaskTest extends UnitTest {
 		
 		User user = new User(email, password, fullname).save();
 		
-	    new Task(user, "first task","do something 1","stuff").save();
+	    Task t = new Task(user, "first task","do something 1","stuff");
+	    t.done = true;
+	    t.save();
 	    
 	    // Retrieve the user with e-mail address bob@gmail.com
 	    Task aTask = Task.find("byTitle","first task").first();
+	    
 	    
 	    // Test 
 	    assertNotNull(aTask);
 	    assertEquals("first task", aTask.title);
 	    assertEquals("do something 1", aTask.description);
+	    assertTrue(aTask.done);
         
         new Task(user, "second task","do something 2","stuff").save();
         
