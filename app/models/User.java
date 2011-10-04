@@ -13,11 +13,13 @@ public class User extends Model {
 	    public String password;
 	    public String fullname;
 	    public boolean isAdmin;
+	    public Date timestamp;
 	    
 	    public User(String username, String password, String fullname) {
 	        this.username = username;
 	        this.password = password;
 	        this.fullname = fullname;
+	        timestamp = new Date();
 	    }
 	    
 	    public static User connect(String username, String password) {

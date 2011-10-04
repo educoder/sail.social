@@ -5,3 +5,14 @@
 /logs
 /eclipse
 *.class
+
+## generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
+
+eclipse/classes/BasicTest.class
+
+eclipse/classes/BasicTest.class

@@ -9,16 +9,16 @@ import java.util.*;
 @Entity
 public class Profile extends Model {
     	    
-	  	public Date postedAt;
-	  
 	    @OneToOne
 	    public User user;
-	    
 	    public String description;
+	    public Date timestamp;
+		public String status;
 	    
-	    public Profile(User user, String description) {
+	    public Profile(User user, String description, String status) {
 	        this.user = user;
 	        this.description = description;
-	        postedAt = new Date();
+	        this.status = status;
+	        timestamp = new Date();
 	    }
 }
