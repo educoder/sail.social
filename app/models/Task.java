@@ -1,6 +1,7 @@
 package models;
 
 import play.*;
+import play.data.validation.Required;
 import play.db.jpa.*;
 
 import javax.persistence.*;
@@ -9,10 +10,14 @@ import java.util.*;
 @Entity
 public class Task extends Model {
     
+	
 	@ManyToOne
     public User user;
+	
 	public String title;
 	public String description;
+	
+	
 	public String list;
 	public boolean done;
 	
@@ -32,5 +37,11 @@ public class Task extends Model {
 	
 	public static List<Task> allTasksByList(String list) {
 		return find("byList", list).fetch();
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Title:" + title + " " + "Description: " + description + " List: " + list + " User:" + user;
 	}
 }

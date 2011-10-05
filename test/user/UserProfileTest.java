@@ -48,7 +48,9 @@ public class UserProfileTest extends UnitTest {
         User bob = new User(username, password, fullname).save();
         
         // Create a new post
-        new Profile(bob, firstProfile,firstStatus).save();
+        Profile p = new Profile(bob, firstProfile,firstStatus);
+        p.isComplete = true;
+        p.save();
         
         // Test that the post has been created
         assertEquals(1, Profile.count());
@@ -64,5 +66,6 @@ public class UserProfileTest extends UnitTest {
         assertEquals(firstProfile, profile.description);
         assertEquals(firstStatus, profile.status);
         assertNotNull(profile.timestamp);
+        assertTrue(p.isComplete);
     }
 }
