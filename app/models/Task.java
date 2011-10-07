@@ -10,10 +10,6 @@ import java.util.*;
 @Entity
 public class Task extends Model {
     
-	
-	@ManyToOne
-    public User user;
-	
 	public String title;
 	public String description;
 	
@@ -23,16 +19,11 @@ public class Task extends Model {
 	
 	public Date timestamp;
 	
-	public Task(User user, String title, String description, String list) {
-		this.user = user;
+	public Task(String title, String description, String list) {
 		this.title = title;
 		this.description = description;
 		this.list = list;
 		timestamp = new Date();
-	}
-	
-	public static List<Task> allTasksByUser(User user) {
-		return find("byUser", user).fetch();
 	}
 	
 	public static List<Task> allTasksByList(String list) {
@@ -42,6 +33,6 @@ public class Task extends Model {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "Title:" + title + " " + "Description: " + description + " List: " + list + " User:" + user;
+		return "Title:" + title + " " + "Description: " + description + " List: " + list;
 	}
 }
