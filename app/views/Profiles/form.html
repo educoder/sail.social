@@ -35,6 +35,20 @@
         #{/field}
     </p>
     
+     <p>
+        #{field 'gender'}
+        <label>&{'gender'}:</label>
+        <input type="text" name="${field.name}" 
+            value="${profile?.gender}" class="${field.errorClass}" />
+        #{/field}
+    </p>
+  	<p>
+        #{field 'phonenumber'}
+        <label>&{'phonenumber'}:</label>
+        <input type="text" name="${field.name}" 
+            value="${profile?.phonenumber}" class="${field.errorClass}" />
+        #{/field}
+    </p>
     <p>
         <input type="submit" value="Save Profile" />
     </p>

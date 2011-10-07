@@ -6,10 +6,16 @@ import models.*;
 
 public class UserProfileTest extends UnitTest {
 
-	String username = "telsbot";
-	String password = "secret";
-	String fullname = "Mr. Tels J. Bot";
-	String email = "telsbot@robot.com";
+	static String username = "telsbot";
+	static String password = "secret";
+	static String fullname = "Mr. Tels J. Bot";
+	static String email = "telsbot@robot.com";
+	static String description = "I am me";
+	static String status = "Working on the railroad.";
+  	static String firstName = "tels j.";
+	static String lastName = "bot";
+	static String gender = "male";
+	static String phonenumber = "98989988";
 	
 	@Before
 	public void setup() {
@@ -40,29 +46,57 @@ public class UserProfileTest extends UnitTest {
     }
     
     @Test
-    public void createProfile() {
+    public void createBasicProfileWithUser() {
         // Create a new user and save it
-    	String firstProfile = "tels j.";
-    	String firstStatus = "bot";
-        User user = new User(username, password).save();
-        
+    	
+    	Profile p = getProfile();
         // Create a new post
-        Profile p = new Profile(user, firstProfile,firstStatus);
-        p.isComplete = true;
+      
         p.save();
         
         // Test that the post has been created
         assertEquals(1, Profile.count());
         
         // Retrieve all posts created by Bob
-        Profile userProfile = Profile.findProfileByUser(user);
+        Profile userProfile = Profile.findProfileByUser(p.user);
         
         // Tests
         assertNotNull(userProfile);
-        assertEquals(user, userProfile.user);
-        assertEquals(firstProfile, userProfile.firstname);
-        assertEquals(firstStatus, userProfile.lastname);
-        assertNotNull(userProfile.timestamp);
-        assertTrue(p.isComplete);
+        assertEquals(p.user, userProfile.user);
+    
+    }
+    
+    //@Test
+    public void profilePropertiesWithUser() {
+		Profile profile = getProfile();
+		profile.gender = gender;
+		profile.phonenumber = phonenumber;
+		profile.description = description;
+		profile.status = status;
+		profile.isComplete = true;
+		profile.save();
+		
+		Profile found = Profile.findById(profile.id);
+		
+	    assertEquals(firstName, found.firstname);
+        assertEquals(lastName, found.lastname);
+        assertEquals(description, found.description);
+        assertEquals(status, found.status);
+        
+        assertEquals(gender, found.gender);
+        assertEquals(phonenumber, found.phonenumber);
+        
+        assertNotNull(found.timestamp);
+        assertTrue(found.isComplete);
+    }
+    
+    public static User getUser() {
+        User user = new User(username, password).save();
+        return user;
+    }
+    
+    public static Profile getProfile() {
+        Profile p = new Profile(getUser(), firstName,lastName).save() ;
+        return p;
     }
 }

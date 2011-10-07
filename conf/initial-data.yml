@@ -10,6 +10,8 @@ Profile(telsbotProfile):
     lastname: bot
     description: profile of telsbot
     status: I am telsbot
+    gender: female
+    phonenumber: 93428502
     isComplete: false
    
 Task(T1):

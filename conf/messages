@@ -5,4 +5,7 @@
 validation.required=%s is required
 firstname = First Name
 lastname = Last Name
+name = Name
 emailaddress = Email
+gender = Gender
+phonenumber = Phone Number
