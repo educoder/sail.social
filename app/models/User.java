@@ -14,14 +14,13 @@ public class User extends Model {
 	public String username;
 	@Required
 	public String password;
-	public String fullname;
+	
 	public boolean isAdmin;
 	public Date timestamp;
 
-	public User(String username, String password, String fullname) {
+	public User(String username, String password) {
 		this.username = username;
 		this.password = password;
-		this.fullname = fullname;
 		timestamp = new Date();
 	}
 
@@ -29,9 +28,13 @@ public class User extends Model {
 		return find("byUsernameAndPassword", username, password).first();
 	}
 	
+	public static User findUserByUsername(String username) {
+		return find("byUsername", username).first();
+	}
+	
 	@Override
 	public String toString() {
-		return "Username: " + username + " Name: " + fullname + "isAdmin: " + isAdmin;
+		return "Username: " + username + " Password: " + password;
 	}
 
 }

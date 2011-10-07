@@ -1,0 +1,42 @@
+#{form @save()}
+ 
+#{ifErrors}
+ 
+   <h1>Oops…</h1>
+ 
+   #{errors}
+       <li>${error}</li>
+   #{/errors}
+ 
+#{/ifErrors}
+     
+    <p>
+        #{field 'firstname'}
+        <label>&{'firstname'}:</label>
+        <input type="text" name="${field.name}" 
+            value="${profile?.firstname}" class="${field.errorClass}" />
+        #{/field}
+    </p>
+ 
+   <p>
+        #{field 'lastname'}
+        <label>&{'lastname'}:</label>
+        <input type="text" name="${field.name}" 
+            value="${profile?.lastname}" class="${field.errorClass}" />
+            
+        #{/field}
+    </p>
+    
+     <p>
+        #{field 'email'}
+        <label>&{'emailaddress'}:</label>
+        <input type="text" name="${field.name}" 
+            value="${profile?.email}" class="${field.errorClass}" />
+        #{/field}
+    </p>
+    
+    <p>
+        <input type="submit" value="Save Profile" />
+    </p>
+    
+#{/form}

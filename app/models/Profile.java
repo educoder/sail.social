@@ -13,20 +13,32 @@ public class Profile extends Model {
 	@Required
 	@OneToOne
 	public User user;
+	
+	public String firstname;
+	public String lastname;
+	public String email;
 	public String description;
-	public Date timestamp;
 	public String status;
+	public String gender;
+	public String phonenumber;
+	
+	public Date timestamp;
+	
 	public boolean isComplete;
 
-	public Profile(User user, String description, String status) {
+	public Profile(User user, String firstname, String lastname) {
 		this.user = user;
-		this.description = description;
-		this.status = status;
+		this.firstname = firstname;
+		this.lastname = lastname;
 		timestamp = new Date();
+	}
+	
+	public static Profile findProfileByUser(User user) {
+		return find("byUser", user).first();
 	}
 	
 	@Override
 	public String toString() {
-		return "User:" + user + " Description:" + description + " Status: " + status;
+		return "User id:" + user.id + " firstname: " + firstname + " lastname: " + lastname;
 	}
 }

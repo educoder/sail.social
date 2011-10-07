@@ -3,12 +3,14 @@
 User(telsbotUser):
     username: telsbot
     password: secret
-    fullname: Tels J. Bot
     
 Profile(telsbotProfile):
     user: telsbotUser
+    firstname: tels J.
+    lastname: bot
     description: profile of telsbot
     status: I am telsbot
+    isComplete: false
    
 Task(T1):
     user: telsbotUser

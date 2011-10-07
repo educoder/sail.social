@@ -22,7 +22,7 @@ public class TaskTest extends UnitTest {
 	public void createTask() {
 	    // Create a new user and save it
 		
-		User user = new User(email, password, fullname).save();
+		User user = new User(email, password).save();
 		
 	    Task t = new Task(user, "first task","do something 1","stuff");
 	    t.done = true;

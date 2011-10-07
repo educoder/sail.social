@@ -19,20 +19,19 @@ public class UserProfileTest extends UnitTest {
 	@Test
 	public void createAndRetrieveUser() {
 	    // Create a new user and save it
-	    new User(username,password, fullname).save();
+	    new User(username,password).save();
 	    
 	    // Retrieve the user with e-mail address bob@gmail.com
-	    User telsbot = User.find("byUsername",username).first();
+	    User telsbot = User.findUserByUsername(username);
 	    
 	    // Test 
 	    assertNotNull(telsbot);
-	    assertEquals(fullname, telsbot.fullname);
 	}
 
     @Test
     public void tryConnectAsUser() {
         // Create a new user and save it
-        new User(email, password, fullname).save();
+        new User(email, password).save();
         
         // Test 
         assertNotNull(User.connect(email, password));
@@ -43,12 +42,12 @@ public class UserProfileTest extends UnitTest {
     @Test
     public void createProfile() {
         // Create a new user and save it
-    	String firstProfile = "My first profile";
-    	String firstStatus = "chilling";
-        User bob = new User(username, password, fullname).save();
+    	String firstProfile = "tels j.";
+    	String firstStatus = "bot";
+        User user = new User(username, password).save();
         
         // Create a new post
-        Profile p = new Profile(bob, firstProfile,firstStatus);
+        Profile p = new Profile(user, firstProfile,firstStatus);
         p.isComplete = true;
         p.save();
         
@@ -56,16 +55,14 @@ public class UserProfileTest extends UnitTest {
         assertEquals(1, Profile.count());
         
         // Retrieve all posts created by Bob
-        List<Profile> bobPosts = Profile.find("byUser", bob).fetch();
+        Profile userProfile = Profile.findProfileByUser(user);
         
         // Tests
-        assertEquals(1, bobPosts.size());
-        Profile profile = bobPosts.get(0);
-        assertNotNull(profile);
-        assertEquals(bob, profile.user);
-        assertEquals(firstProfile, profile.description);
-        assertEquals(firstStatus, profile.status);
-        assertNotNull(profile.timestamp);
+        assertNotNull(userProfile);
+        assertEquals(user, userProfile.user);
+        assertEquals(firstProfile, userProfile.firstname);
+        assertEquals(firstStatus, userProfile.lastname);
+        assertNotNull(userProfile.timestamp);
         assertTrue(p.isComplete);
     }
 }

@@ -1,6 +1,17 @@
 #{extends 'main.html' /}
 #{set title:'SciHub' /}
 
+application index --  <a href="@{Profiles.form()}">edit your profile</a>
+<br><br><br>
+Hi, ${profile.firstname}
+<br>
+your profile:<br><br><br>
+<br>
+Name:<br>
+${profile.firstname} ${profile.lastname}
+<br>
+Email:<br>
+${profile.email}
 
 
-#{display_tasks tasks:allTasks, as:'home' /}
+
