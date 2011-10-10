@@ -1,16 +1,21 @@
 package controllers;
 
+import java.util.List;
+
 import models.Profile;
+import models.Questionaire;
+import models.User;
+import play.data.validation.Error;
+import play.db.jpa.Blob;
 import play.mvc.Controller;
 import play.mvc.With;
-import play.data.validation.*;
-import play.data.validation.Error;
 
 @With(Secure.class)
 public class Profiles extends Controller {
 
 	public static void form() {
 		Profile profile = getCurrentProfile();
+		
 		render(profile);
 	}
 
@@ -36,9 +41,27 @@ public class Profiles extends Controller {
 			}
 		} else {
 			profile.save();
+			
+			//if they have filled the questionaire
+			String username = Security.connected();	    
+			User user = User.findUserByUsername(username);
+			    
 			Application.index();
 		}
 
+	}
+
+	public static void uploadPicture(Blob picture) {
+		Profile profile = getCurrentProfile();
+		profile.picture = picture;
+		profile.save();
+		//form();
+	}
+
+	public static void getPicture(long id) {
+		Profile profile = Profile.findById(id);
+		response.setContentTypeIfNotSet(profile.picture.type());
+		renderBinary(profile.picture.get());
 	}
 
 	public static Profile getCurrentProfile() {

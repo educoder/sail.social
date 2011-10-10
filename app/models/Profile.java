@@ -1,11 +1,13 @@
 package models;
 
-import play.*;
-import play.data.validation.Required;
-import play.db.jpa.*;
+import java.util.Date;
 
-import javax.persistence.*;
-import java.util.*;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+
+import play.data.validation.Required;
+import play.db.jpa.Blob;
+import play.db.jpa.Model;
 
 @Entity
 public class Profile extends Model {
@@ -25,7 +27,9 @@ public class Profile extends Model {
 	public Date timestamp;
 	
 	public boolean isComplete;
-
+	
+	public Blob picture;
+	
 	public Profile(User user, String firstname, String lastname) {
 		this.user = user;
 		this.firstname = firstname;

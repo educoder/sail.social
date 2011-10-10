@@ -1,6 +1,11 @@
 package user;
 import org.junit.*;
+
+import groovy.ui.text.FindReplaceUtility;
+
 import java.util.*;
+
+import play.db.jpa.JPABase;
 import play.test.*;
 import models.*;
 
@@ -45,6 +50,8 @@ public class UserProfileTest extends UnitTest {
         assertNull(User.connect("tom@gmail.com", "secret"));
     }
     
+  
+    
     @Test
     public void createBasicProfileWithUser() {
         // Create a new user and save it
@@ -64,6 +71,47 @@ public class UserProfileTest extends UnitTest {
         assertNotNull(userProfile);
         assertEquals(p.user, userProfile.user);
     
+    }
+    
+    @Test
+    public void createUserWithQuestionaires() {
+    	User user = getUser();
+    	
+    	List<Question> questions = QuestionTest.getQuestions();
+    	
+    	Questionaire qa = new Questionaire("user experiences");
+    	for (Question question : questions) {
+			qa.questions.add(question);
+		}
+    	qa.save();
+    	
+    	
+    	QuestionaireAnswer answers = new QuestionaireAnswer(qa);
+    	
+    	String a1 = "this is good";
+    	String a2 = "yo yo yo";
+    	
+    	answers.questionAnswers.put(qa.questions.get(0), a1);
+    	answers.questionAnswers.put(qa.questions.get(1), a2);
+    	
+    	answers.hasAnswered = true;
+    	answers.save();
+    	
+    	QuestionaireAnswer found = Questionaire.findById(answers.id);
+    	
+    	assertEquals(a1, found.questionAnswers.get(found.questionaire.questions.get(0)));
+    	assertEquals(a2, found.questionAnswers.get(found.questionaire.questions.get(1)));
+    	assertEquals(true, found.hasAnswered);
+    	
+//    	user.questionaires.add(qa);
+//    	user.save();
+//    	
+//    	User found = User.findById(user.id);
+//    	
+//    	assertEquals(found.questionaires.size(), 1);
+    	
+    	
+    	
     }
     
     //@Test

@@ -2,7 +2,7 @@
  
 #{ifErrors}
  
-   <h1>Oops…</h1>
+   <h1>Oops</h1>
  
    #{errors}
        <li>${error}</li>
@@ -10,6 +10,33 @@
  
 #{/ifErrors}
      
+	<p>
+		<label>&{'profileimage'}:</label>
+		#{if profile.picture}
+        
+		<img src="@{Profiles.getPicture(profile.id)}" />
+        #{/if}
+       
+
+<a id="uploadProfile" href="#">upload a new picture</a>
+<script type="text/javascript" charset="UTF-8">
+   $('#uploadProfile').click(function() {
+       $.post('@{Profiles.uploadPicture()}', function(profile) {
+			$('img').replaceWith('<img src="@{Profiles.getPicture(profile.id)}" />')
+		})
+	})
+</script>	
+			    #{form @Profiles.uploadPicture(), enctype:'multipart/form-data'}
+
+				    <input type="file" name="profile.picture" />
+				
+				
+				    <input type="submit" name="submit" value="Save" />
+				#{/form}
+    </p>
+
+
+
     <p>
         #{field 'firstname'}
         <label>&{'firstname'}:</label>

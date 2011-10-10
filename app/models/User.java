@@ -5,6 +5,7 @@ import play.data.validation.Required;
 import play.db.jpa.*;
 
 import javax.persistence.*;
+
 import java.util.*;
 
 @Entity
@@ -17,6 +18,9 @@ public class User extends Model {
 	
 	public boolean isAdmin;
 	public Date timestamp;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	public List<QuestionaireAnswer> questionaireAnswer = new ArrayList<QuestionaireAnswer>();
 
 	public User(String username, String password) {
 		this.username = username;

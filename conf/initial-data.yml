@@ -1,18 +1,19 @@
 # you describe your data using the YAML notation here
 # and then load them using Fixtures.load("data.yml")
-User(telsbotUser):
-    username: telsbot
-    password: secret
     
-Profile(telsbotProfile):
-    user: telsbotUser
-    firstname: tels J.
-    lastname: bot
-    description: profile of telsbot
-    status: I am telsbot
-    gender: female
-    phonenumber: 93428502
-    isComplete: false
+Question(q1):
+    title: smart phone
+    question: Do you have a smart phone?
+    isBinary: true
+
+Question(q2):
+    title: computers
+    question: How many computers do you have at home?
+    isBinary: false  
+
+Questionaire(ques1):
+    title: User survey
+    questions: [q1, q2]   
    
 Task(T1):
     user: telsbotUser
@@ -34,3 +35,18 @@ Task(T3):
     description: connect memory chips to form super robot
     list: POST-VISIT
     done: true
+    
+User(telsbotUser):
+    username: telsbot
+    password: secret
+    questionaires: [ques1]
+
+Profile(telsbotProfile):
+    user: telsbotUser
+    firstname: tels J.
+    lastname: bot
+    description: profile of telsbot
+    status: I am telsbot
+    gender: female
+    phonenumber: 93428502
+    isComplete: false
