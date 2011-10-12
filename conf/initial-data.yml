@@ -2,18 +2,42 @@
 # and then load them using Fixtures.load("data.yml")
     
 Question(q1):
-    title: smart phone
+    title: smartphone
     question: Do you have a smart phone?
     isBinary: true
 
 Question(q2):
+    title: family
+    question: How many are you at home?
+    isBinary: false
+        
+Question(q3):
     title: computers
     question: How many computers do you have at home?
     isBinary: false  
+    
+Question(q4):
+    title: internet
+    question: What do you use the internet for usually?
+    isBinary: false
+    
+Question(q5):
+    title: websites
+    question: What are your favorite websites?
+    isBinary: false
 
+Question(q6):
+    title: game
+    question: What are your favorite websites?
+    isBinary: false
+        
 Questionaire(ques1):
-    title: User survey
-    questions: [q1, q2]   
+    title: Usersurvey
+    questions: [q1, q2, q3, q4, q5, q6]   
+    
+QuestionaireAssignment(quesAss1):
+    questionaire: ques1
+    hasSubmitted: false    
    
 Task(T1):
     user: telsbotUser
@@ -39,7 +63,7 @@ Task(T3):
 User(telsbotUser):
     username: telsbot
     password: secret
-    questionaires: [ques1]
+    questionaireAssignments: [quesAss1]
 
 Profile(telsbotProfile):
     user: telsbotUser

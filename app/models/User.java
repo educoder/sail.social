@@ -6,12 +6,14 @@ import play.db.jpa.*;
 
 import javax.persistence.*;
 
+
 import java.util.*;
 
 @Entity
 public class User extends Model {
 
 	@Required
+	@Column(unique=true, nullable=false) 
 	public String username;
 	@Required
 	public String password;
@@ -20,8 +22,8 @@ public class User extends Model {
 	public Date timestamp;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
-	public List<QuestionaireAnswer> questionaireAnswer = new ArrayList<QuestionaireAnswer>();
-
+	public List<QuestionaireAssignment> questionaireAssignments = new ArrayList<QuestionaireAssignment>();
+	
 	public User(String username, String password) {
 		this.username = username;
 		this.password = password;

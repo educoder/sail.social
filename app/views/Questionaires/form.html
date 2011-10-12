@@ -1,0 +1,60 @@
+#{form @save()}
+ 
+#{ifErrors}
+ 
+   <h1>Oops</h1>
+ 
+   #{errors}
+       <li>${error}</li>
+   #{/errors}
+ 
+#{/ifErrors}
+ 
+<ul> 
+#{list questionAnswers, as:'questionAnswer'}
+ 
+   
+   <li>${questionAnswer.question.question}</li>
+   
+    #{field 'answers[questionAnswer_index-1]'} 
+    
+     
+    #{if questionAnswer.question.isBinary}
+    
+    	<select>
+    	#{if questionAnswer.answer == 'YES'}
+    		<option value ="YES" selected="SELECTED">YES</option>
+    	#{/if}
+		#{else}
+			<option value ="YES">YES</option>
+    	#{/else}
+  			
+  		#{if questionAnswer.answer == 'NO'}
+    		<option value ="NO" selected="SELECTED">NO</option>
+    	#{/if}
+		#{else}
+			<option value ="NO">NO</option>
+    	#{/else}
+  			
+		</select>
+	#{/if}
+	#{else}
+    	  <textarea name="${field.name}" cols="40" rows="5" class="${field.errorClass}">
+    	${questionAnswer?.answer}
+		</textarea>  
+	#{/else}
+	#{/}
+   
+	
+	
+    
+#{/}   
+</ul>  
+
+
+
+    <p>
+        <input type="submit" value="Save Questionaire" />
+    </p>
+    
+#{/form}

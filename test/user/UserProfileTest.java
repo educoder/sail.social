@@ -75,34 +75,40 @@ public class UserProfileTest extends UnitTest {
     
     @Test
     public void createUserWithQuestionaires() {
-    	User user = getUser();
-    	
-    	List<Question> questions = QuestionTest.getQuestions();
-    	
-    	Questionaire qa = new Questionaire("user experiences");
-    	for (Question question : questions) {
-			qa.questions.add(question);
-		}
-    	qa.save();
-    	
-    	
-    	QuestionaireAnswer answers = new QuestionaireAnswer(qa);
-    	
-    	String a1 = "this is good";
-    	String a2 = "yo yo yo";
-    	
-    	answers.questionAnswers.put(qa.questions.get(0), a1);
-    	answers.questionAnswers.put(qa.questions.get(1), a2);
-    	
-    	answers.hasAnswered = true;
-    	answers.save();
-    	
-    	QuestionaireAnswer found = Questionaire.findById(answers.id);
-    	
-    	assertEquals(a1, found.questionAnswers.get(found.questionaire.questions.get(0)));
-    	assertEquals(a2, found.questionAnswers.get(found.questionaire.questions.get(1)));
-    	assertEquals(true, found.hasAnswered);
-    	
+//    	User user = getUser();
+//    	
+//    	List<Question> questions = QuestionTest.getQuestions();
+//    	
+//    	Questionaire qa = new Questionaire("user experiences");
+//    	for (Question question : questions) {
+//			qa.questions.add(question);
+//		}
+//    	qa.save();
+//    	
+//    	
+//    	QuestionaireAnswer answers = new QuestionaireAnswer(qa);
+//    	
+//    	String a1 = "this is good";
+//    	String a2 = "yo yo yo";
+//    	
+//    	answers.questionAnswers.put(qa.questions.get(0), a1);
+//    	answers.questionAnswers.put(qa.questions.get(1), a2);
+//    	
+//    	answers.hasAnswered = true;
+//    	answers.save();
+//    	
+//    	QuestionaireAnswer found = QuestionaireAnswer.findById(answers.id);
+//    	
+//    	assertEquals(a1, found.questionAnswers.get(found.questionaire.questions.get(0)));
+//    	assertEquals(a2, found.questionAnswers.get(found.questionaire.questions.get(1)));
+//    	assertEquals(true, found.hasAnswered);
+//    	
+//    	user.questionaireAnswers.add(found);
+//    	user.save();
+//    	
+//    	User foundUser = user.findById(user.id);
+//    	
+//    	assertEquals(foundUser.questionaireAnswers.get(0), found);
 //    	user.questionaires.add(qa);
 //    	user.save();
 //    	

@@ -3,7 +3,7 @@ package controllers;
 import java.util.List;
 
 import models.Profile;
-import models.Questionaire;
+import models.QuestionaireAssignment;
 import models.User;
 import play.data.validation.Error;
 import play.db.jpa.Blob;
@@ -45,8 +45,26 @@ public class Profiles extends Controller {
 			//if they have filled the questionaire
 			String username = Security.connected();	    
 			User user = User.findUserByUsername(username);
-			    
-			Application.index();
+			
+			List<QuestionaireAssignment> questionaireAssignments = user.questionaireAssignments;
+			
+			QuestionaireAssignment questionaireAssignment = questionaireAssignments.get(0);
+			
+			if( questionaireAssignment.hasSubmitted ) {
+				Application.index();
+			} else {
+				Questionaires.form(questionaireAssignment.id);
+			}
+			
+//			for (QuestionaireAnswer qa : answers) {
+//				if( qa.)
+//			}
+//			
+//			if( questionaireAnswer.hasAnswered) {
+//				Application.index();
+//			} else {
+//				Questionaires.form(questionaireAnswer.id);
+//			}
 		}
 
 	}

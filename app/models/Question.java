@@ -18,4 +18,8 @@ public class Question extends Model {
 		this.answer = answer;
 	}
 	
+	@Override
+	public String toString() {
+		return "title: " + title + " question: " + question + " answer: " + answer;
+	}
 }
