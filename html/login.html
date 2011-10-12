@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>ScienceHub</title>
+<link href="main.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+-->
+</style>
+</head>
+
+<body>
+
+<table height="200px"width="100%" border="1">
+  <tr>
+    <td background="top.png">&nbsp;</td>
+  </tr>
+</table>
+ 
+<div id="loginBox">
+<table width="100%" border="1">
+  <tr>
+    <td width="29%" rowspan="5"><img src="avatar.png" width="194" height="178" alt="avatar" /></td>
+    <td colspan="3">&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td colspan="3">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="96" colspan="2"><p id="username-field">
+			<label for="username">&{'secure.username'}</label>
+			<input type="text" name="username" id="username" value="${flash.username}" />
+		</p>
+		<p id="password-field">
+			<label for="password">&{'secure.password'}</label>
+			<input type="password" name="password" id="password" value="" />
+		</p></td>
+  </tr>
+  <tr>
+    <td width="28%" align="right" valign="middle"><p valign="middle" id="remember-field2">
+    
+    <input type="checkbox" name="remember" id="remember" value="true" ${flash.remember ? 'checked="true"' : ''} />
+    	<label for="remember" class="loginLabel">&{'secure.remember'}  </label></p>
+    
+    </td>
+    <td width="15%" align="right" valign="middle">
+      
+      
+   		
+        
+       <input id="signin" type="image" src="login.png" alt="submit" HEIGHT="38" WIDTH="80" />
+      <br /></td>
+    <td width="28%" align="right"></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td colspan="3" align="right" valign="middle">&nbsp;</td>
+    </tr>
+  </table>
+
+</div>
+</body>
+</html>
