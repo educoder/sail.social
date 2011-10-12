@@ -15,17 +15,12 @@
     </head>
     <body>
         
-        <div id="header">
-            <div id="logo">
-                scihub.
-            </div>
-            <ul id="tools">
-                <li>
-                                       <a href="@{Secure.logout()}">Log out</a>
-                    
-                </li>
-            </ul>
-        </div>
+        	<div id="background">
+		<img src="@{'/public/images/top.png'}" class="stretch" alt="" /> <img
+			src="@{'/public/images/logo.png'}" class="logo" alt="" />
+			<a href="@{Secure.logout()}" class="logout">Log out</a>
+		</div>
+	
         
         <div id="main">
             #{doLayout /} 
