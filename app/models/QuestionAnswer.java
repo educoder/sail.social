@@ -25,5 +25,9 @@ public class QuestionAnswer extends Model {
 	public static QuestionAnswer findByQuestion(Question question) {
 		return find("byQuestion", question).first();
 	}
-	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return String.format("Question: %s | Answer %s", question, answer);
+	}
 }

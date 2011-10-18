@@ -6,7 +6,11 @@
         <meta charset="${_response_encoding}">	
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <link rel="stylesheet" type="text/css" media="screen" 
+            href="@{'/public/stylesheets/column.css'}" />
+        <link rel="stylesheet" type="text/css" media="screen" 
             href="@{'/public/stylesheets/main.css'}" />
+                   <link rel="stylesheet" type="text/css" media="screen" 
+            href="@{'/public/stylesheets/reset.css'}" />
         #{get 'moreStyles' /}
         <link rel="shortcut icon" type="image/png" 
             href="@{'/public/images/favicon.png'}" />
@@ -26,9 +30,6 @@
             #{doLayout /} 
         </div>
         
-        <p id="footer">
-            footer
-        </p>
-        
+       
     </body>
 </html>

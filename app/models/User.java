@@ -23,6 +23,9 @@ public class User extends Model {
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	public List<QuestionaireAssignment> questionaireAssignments = new ArrayList<QuestionaireAssignment>();
+	@ManyToMany(cascade = CascadeType.ALL)
+	public List<TaskAssignment> taskAssignments = new ArrayList<TaskAssignment>();
+	
 	
 	public User(String username, String password) {
 		this.username = username;

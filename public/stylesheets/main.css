@@ -6,6 +6,20 @@ body {
 	z-index:-1;
 	
 }
+.profileImageBox {
+	width: 200px;
+	height:150px;
+	padding: 10px;
+}
+
+li {
+	color: white;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+li span {
+color: black /* text color */
+}
 
 #background {
     width: 100%; 
@@ -19,7 +33,7 @@ body {
 .logo {
 	position: absolute; 
     left: 30px; 
-    top: 15px; 
+    top: 17px; 
     z-index: 1;
 }
 

@@ -1,0 +1,15 @@
+#{ifnot _post} 
+<p>no questionaires have been assigned</p>
+#{/ifnot}
+#{else}
+<h2>Questionaires</h2>
+
+#{list _post, as:'questionaireAssignment'}
+	<a href="@{Questionaires.form(questionaireAssignment.id)}">${questionaireAssignment.questionaire.title}</a>
+
+#{/}
+#{/else}
+
+
+	
+

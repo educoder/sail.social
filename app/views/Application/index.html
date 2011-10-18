@@ -1,28 +1,40 @@
 #{extends 'main.html' /}
 #{set title:'SciHub' /}
 
-application index --  <a href="@{Profiles.form()}">edit your profile</a>
-<br><br><br>
-Hi, ${profile.firstname}
-<br>
-<br>
-your profile:<br><br><br>
-<br>
-<br>
-&{'name'}:<br>
-${profile.firstname} ${profile.lastname}
-<br>
-<br>
-&{'email'}:<br>
-${profile.email}
-<br>
-<br>
-&{'gender'}:<br>
-${profile.gender}
-<br>
-<br>
-&{'phonenumber'}:<br>
-${profile.phonenumber}
+
+<div id="body">
+		<div id="header" class="cf">
+			<h3>&nbsp;Hi ${profile.firstname}</h3>
+</div>
+		<div id="main" class="cf">
+			<div id="content-1">
+            	
+				<img  class="profileImageBox" src="@{'/public/images/profile.png'}" />
+				<ul>
+				<li><span>&{'name'}: ${profile.firstname} ${profile.lastname}</span></li>
+				<li><span>&{'email'}: ${profile.email}</span></li>
+				<li><span>&{'gender'}: ${profile.gender}</span></li>
+				<li><span>&{'phonenumber'}: ${profile.phonenumber}</span></li>
+				</ul>
+			</div>
+			<div id="content-2">
+				<div id="content-2-1">
+					#{display_tasks ta:user.taskAssignments/}
+				</div>
+				<div id="content-2-2">
+					#{display_questionaires post:user.questionaireAssignments/}
+					
+				</div>
+			</div>
+		</div>
+		
+</div>
+
+
+ 
+
+
+
 
 
 

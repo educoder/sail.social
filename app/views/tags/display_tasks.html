@@ -1,26 +1,35 @@
-#{ifnot tasks} 
-<p>no tasks</p>
+<b>Assigned Tasks</b>
+<br>
+#{ifnot _ta.tasks} 
+<p>no tasks have been assigned</p>
 #{/ifnot}
+#{else}  
 
-Task List
- 
- <table>
-    <thead>
+#{list _ta, as:'taskAssignment'}
+	
+	 <table width="100%">
         <tr>
         	<th>Status</th>
             <th>Task</th>
-            <th>Description</th>
+            <th>Description</td>
             <th>Location</th>
         </tr>
-    </thead>
-    <tbody>
-        #{list items:_tasks, as:'task'}
+        	#{list taskAssignment.tasks, as:'task'}
+	
+	
             <tr>
                 <td><input type="checkbox" ${task.done ? 'checked' : ''} id="${task.id}"></input></td>
                 <td>${task.title}</td>
                 <td>${task.description}</td>
                 <td>${task.list}</td>             
             </tr>
-        #{/list}
-    </tbody>
-</table>
+            #{/list}
+	</table>
+
+	
+#{/list}
+ 
+ 
+
+#{/else}
+

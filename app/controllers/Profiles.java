@@ -35,10 +35,7 @@ public class Profiles extends Controller {
 		validation.required("phonenumber", phonenumber);
 
 		if (validation.hasErrors()) {
-			for (Error error : validation.errors()) {
-				render("@form", profile);
-
-			}
+			render("@form", profile);
 		} else {
 			profile.save();
 			
