@@ -1,18 +1,29 @@
-<b>Assigned Tasks</b>
+<b>&{'assignedtasks'}</b>
 <br>
 #{ifnot _ta.tasks} 
-<p>no tasks have been assigned</p>
+<p>&{'noassignedtasks'}</p>
 #{/ifnot}
 #{else}  
 
+<br>
+
+ 
+        
 #{list _ta, as:'taskAssignment'}
 	
-	 <table width="100%">
+		<table width="100%">
         <tr>
-        	<th>Status</th>
-            <th>Task</th>
-            <th>Description</td>
-            <th>Location</th>
+        	<th>&{'status'}</th>
+            <th>&{'task'}</th>
+            <th>&{'description'}</td>
+            <th>&{'location'}</th>
+        </tr>
+        
+        <tr>
+	 		<th>&nbsp</th>
+            <th></th>
+            <th></td>
+            <th></th>
         </tr>
         	#{list taskAssignment.tasks, as:'task'}
 	
@@ -24,11 +35,11 @@
                 <td>${task.list}</td>             
             </tr>
             #{/list}
-	</table>
-
+	
+		</table>
 	
 #{/list}
- 
+
  
 
 #{/else}

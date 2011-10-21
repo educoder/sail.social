@@ -7,9 +7,12 @@ body {
 	
 }
 .profileImageBox {
+	position: relative;
+	top: 0px; 
 	width: 200px;
 	height:150px;
 	padding: 10px;
+	padding-left: 0px;
 }
 
 li {

@@ -1,37 +1,69 @@
-#{extends 'main.html' /}
-#{set title:'SciHub' /}
+#{extends 'main.html' /} #{set title:'SciHub' /}
 
 
 <div id="body">
-		<div id="header" class="cf">
-			<h3>&nbsp;Hi ${profile.firstname}</h3>
-</div>
-		<div id="main" class="cf">
-			<div id="content-1">
-            	
-				<img  class="profileImageBox" src="@{'/public/images/profile.png'}" />
-				<ul>
-				<li><span>&{'name'}: ${profile.firstname} ${profile.lastname}</span></li>
-				<li><span>&{'email'}: ${profile.email}</span></li>
+	<div id="header" class="cf">
+		<h3>&nbsp;Hi ${profile.firstname}!</h3>
+	</div>
+	<div id="main" class="cf">
+		<div id="content-1">
+
+			<ul>
+				<li><img class="profileImageBox"
+					src="@{'/public/images/profile.png'}" />
+				<li><a href="@{Profiles.form()}">&{'editprofilephoto'}</a>
+				<li>&nbsp
+				<li><span>&{'name'}: ${profile.firstname}
+						${profile.lastname}</span></li>
+				<li><span>&{'emailaddress'}: ${profile.email}</span></li>
 				<li><span>&{'gender'}: ${profile.gender}</span></li>
 				<li><span>&{'phonenumber'}: ${profile.phonenumber}</span></li>
-				</ul>
-			</div>
-			<div id="content-2">
-				<div id="content-2-1">
-					#{display_tasks ta:user.taskAssignments/}
-				</div>
-				<div id="content-2-2">
-					#{display_questionaires post:user.questionaireAssignments/}
-					
-				</div>
-			</div>
+				<br>
+				<li><span><a href="@{Profiles.form()}">&{'editprofile'}</a></span></li>
+			</ul>
 		</div>
-		
+		<div id="content-2">
+			<div id="content-2-1">
+				#{display_tasks ta:user.taskAssignments/} <br> #{display_videos
+				/} <br> #{display_homeworks /} <br>
+
+			</div>
+			<div id="content-2-2">#{display_questionaires
+				post:user.questionaireAssignments/}</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		var tl;
+		function onLoad() {
+			var bandInfos = [ Timeline.createBandInfo({
+				width : "70%",
+				intervalUnit : Timeline.DateTime.MONTH,
+				intervalPixels : 100
+			}), Timeline.createBandInfo({
+				width : "30%",
+				intervalUnit : Timeline.DateTime.YEAR,
+				intervalPixels : 200
+			}) ];
+			tl = Timeline.create(document.getElementById("my-timeline"),
+					bandInfos);
+		}
+
+		var resizeTimerID = null;
+		function onResize() {
+			if (resizeTimerID == null) {
+				resizeTimerID = window.setTimeout(function() {
+					resizeTimerID = null;
+					tl.layout();
+				}, 500);
+			}
+		}
+	</script>
+	<div id="footer"><div id="my-timeline" style="height: 150px; border: 1px solid #aaa"></div></div>
 </div>
 
 
- 
+
 
 
 

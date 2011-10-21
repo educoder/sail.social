@@ -33,8 +33,24 @@
      #{field 'gender'}
   <tr>
     <td><label>&{'gender'}:</label></td>
-    <td><input type="text" name="${field.name}" 
-            value="${profile?.gender}" class="${field.errorClass}" /></td>
+    <td> 
+    	<select name="${field.name}" class="${field.errorClass}">
+    	#{if profile.gender == 'male'}
+    		<option value ="male" selected="SELECTED">&{'male'}:</option>
+    	#{/if}
+		#{else}
+			<option value ="male">&{'male'}:</option>
+    	#{/else}
+  			
+  		#{if profile.gender == 'female'}
+    		<option value ="female" selected="SELECTED">&{'female'}</option>
+    	#{/if}
+		#{else}
+			<option value ="female">&{'female'}</option>
+    	#{/else}
+  			
+		</select>
+    
   </tr>
    #{/field}
    #{field 'phonenumber'}

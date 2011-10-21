@@ -1,15 +1,17 @@
 #{ifnot _post} 
-<p>no questionaires have been assigned</p>
+<p>&{'noquestionaires'}</p>
 #{/ifnot}
 #{else}
-<h2>Questionaires</h2>
-
+<h2>&{'questionaires'}:</h2>
+<br>
+<ul>
 #{list _post, as:'questionaireAssignment'}
-	<a href="@{Questionaires.form(questionaireAssignment.id)}">${questionaireAssignment.questionaire.title}</a>
 
+<li><span><a href="@{Questionaires.form(questionaireAssignment.id)}">${questionaireAssignment.questionaire.title}</a></span></li>
+				
 #{/}
 #{/else}
-
+</ul>
 
 	
 

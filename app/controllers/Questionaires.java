@@ -15,7 +15,7 @@ import org.apache.commons.lang.StringUtils;
 import play.data.validation.Validation;
 import play.mvc.Controller;
 
-public class Questionaires extends Controller {
+public class Questionaires extends CRUD {
 
 	public static void save(Long questionaireAssigmentId, List<QuestionAnswer> answers) {
 
@@ -35,7 +35,11 @@ public class Questionaires extends Controller {
 			if (StringUtils.isEmpty(fromDB.answer)) allFilledIn = false;
 			fromDB.save();
 		}
-		if (allFilledIn) Application.index();
+		if (allFilledIn) {
+			questionaireAssignment.hasSubmitted = true;
+			questionaireAssignment.save();
+			Application.index();
+		}
 		else validate(questionaireAssigmentId);
 	}
 	public static void validate(Long questionaireAssigmentId) {
