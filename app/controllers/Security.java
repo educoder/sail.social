@@ -12,6 +12,7 @@ import play.Play;
 import play.libs.WS;
 import play.libs.WS.HttpResponse;
 import play.libs.WS.WSRequest;
+import play.mvc.Router;
 
 /**
  * Checks user login pass
@@ -29,12 +30,12 @@ public class Security extends controllers.Secure.Security {
 		WSRequest req = WS.url(rollcallUrl+"/login.json");
 		req.setParameter("session[login]", username);
 		req.setParameter("session[password]", password);
-		WS.HttpResponse res = req.post();
+		WS.HttpResponse sessionRes = req.post();
 		
-		JsonElement json = res.getJson();
+		JsonElement sessionJson = sessionRes.getJson();
 		
-		if (res.getStatus() == 201) { // session created successfully
-			JsonObject session = json.getAsJsonObject().getAsJsonObject("session");
+		if (sessionRes.getStatus() == 201) { // session created successfully
+			JsonObject session = sessionJson.getAsJsonObject().getAsJsonObject("session");
 			JsonObject account = session.getAsJsonObject("account");
 			
 			String token = session.get("token").getAsString();
@@ -51,8 +52,8 @@ public class Security extends controllers.Secure.Security {
 			}
 			
 		} else { // some error during session creation
-			Logger.warn("Authentication for '"+username+"' failed because: "+json.toString());
-			flash.put("error", "Rollcall authentication failed: "+json.toString());
+			Logger.warn("Authentication for '"+username+"' failed because: "+sessionJson.toString());
+			flash.put("error", "Rollcall authentication failed: "+sessionJson.toString());
 			return false;
 		}
 	}
@@ -67,14 +68,35 @@ public class Security extends controllers.Secure.Security {
 	    }
 	    
 	    profile.isComplete = false;
-	    
 	    session.put("profile.id", profile.id);
-	    
-	    if( profile.isComplete ) {
-	    	Application.index();
-	    } else {
-	    	Profiles.form();
-	    }
+		
+	    // figure out what kind of user this is based on data in Rollcall
+	    String rollcallUrl = Play.configuration.getProperty("sail.rollcall.url");
+		WS.HttpResponse userRes = WS.url(rollcallUrl+"/users/"+username+".json").get();
+		
+		String userKind;
+		
+		if (userRes.getStatus() == 200) {
+			userKind = userRes.getJson().getAsJsonObject().getAsJsonObject("user").get("kind").getAsString();
+			
+			if (userKind == "Instructor") {
+				// redirect to the teacher dashboard
+				redirect(Router.reverse("TeacherDashboard.show").url);
+			} else if (userKind == "Student") {
+			    if( profile.isComplete ) {
+			    	Application.index();
+			    } else {
+			    	Profiles.form();
+			    }
+			} else {
+				throw new RuntimeException("This kind of user cannot log in to this service: '"+userKind+"'");
+			}
+			
+		} else if (userRes.getStatus() == 404) {
+			throw new RuntimeException("'"+username+"' is not a user (maybe a group account?)");
+		} else {
+			throw new RuntimeException("Couldn't retrieve User data for '"+username+"' from "+rollcallUrl+". Response status: "+userRes.getStatus());
+		}
 	   
 	}
 }
