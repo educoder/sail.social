@@ -1,4 +1,5 @@
-#{extends 'main.html' /} #{set title:'SciHub' /}
+#{extends 'main.html' /} #{set title:'SciHub' /} #{stylesheet
+'profile.css' /}
 
 
 <div id="body">
@@ -10,8 +11,11 @@
 
 			<ul>
 				<li><img class="profileImageBox"
-					src="@{'/public/images/profile.png'}" />
-				<li><a href="@{Profiles.form()}">&{'editprofilephoto'}</a>
+					src="@{'/public/images/obama.png'}" /> <!-- <img class="profileImageBox"
+					src="@{'/public/images/profile.png'}" /> 
+				
+				<li><a href="@{Profiles.form()}">&{'editprofilephoto'}</a>	
+				-->
 				<li>&nbsp
 				<li><span>&{'name'}: ${profile.firstname}
 						${profile.lastname}</span></li>
@@ -32,7 +36,7 @@
 				post:user.questionaireAssignments/}</div>
 		</div>
 	</div>
-	
+
 	<script type="text/javascript">
 		var tl;
 		function onLoad() {
@@ -59,7 +63,41 @@
 			}
 		}
 	</script>
-	<div id="footer"><div id="my-timeline" style="height: 150px; border: 1px solid #aaa"></div></div>
+
+	<br>
+	<p>Timeline</p>
+	<br>
+	<div id="mainTimelineBox">
+		<div id="timelineBox-1">
+			<ul>
+			<li>Tasks
+			<li>&nbsp
+			<li>Videos
+			<li>
+			</ul>
+			<div id="timelineFooter">Classroom</div>
+		</div>
+		<div id="timelineBox-1">
+				<ul>
+			<li>Tasks
+			<li>&nbsp
+			<li>Videos
+			<li>
+			</ul>
+			<div id="timelineFooter">Museum</div>
+		</div>
+		<div id="timelineBox-1">
+				<ul>
+			<li>Tasks
+			<li>&nbsp
+			<li>Videos
+			<li>
+			</ul>
+			<div id="timelineFooter">Home</div>
+		</div>
+	</div>
+
+	<div id="footer"></div>
 </div>
 
 

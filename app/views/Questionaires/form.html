@@ -4,15 +4,8 @@
 #{form @save()}
 <input name="questionaireAssigmentId" value="${questionaireAssignment.id}">
 <div id="profileBox">
-#{ifErrors}
- 
-   <h1>Oops</h1>
- 
-   #{errors}
-       <li>${error}</li>
-   #{/errors}
- 
-#{/ifErrors}
+<h2 class="heading">Questionaire</h2>
+<br>
  
 <ul> 
 #{list questionAnswers, as:'questionAnswer'}
@@ -25,7 +18,6 @@
 	  
 	</span>	   	
    </li>
-   
     #{field 'answers['+(questionAnswer_index-1)+'].answer'} 
     
     
@@ -47,10 +39,12 @@
     	#{/else}
   			
 		</select>
+		<li>&nsbp</li>
 	#{/if}
 	#{else}
     	  <textarea name="${field.name}" cols="40" rows="5" class="${field.errorClass}">${questionAnswer?.answer}</textarea>  
-    	  <div class="${field.errorClass}">${field.error}</div>
+    	 <div class="error">${field.error}</div>
+    	  <li>&nsbp</li>
 	#{/else}
 	#{/}
    

@@ -1,4 +1,4 @@
-package user;
+package model;
 import org.junit.*;
 
 import groovy.ui.text.FindReplaceUtility;

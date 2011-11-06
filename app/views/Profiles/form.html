@@ -1,9 +1,10 @@
-#{extends 'main.html' /}
+#{extends 'main.html' /}  #{stylesheet 'profile.css' /}
 
 #{form @save()}
- 
-<div id="profileBox">
 
+<div id="profileBox">
+<h2 class="heading">Profile</h2>
+<br>
 <table width="35%" border="0">
 
 #{field 'firstname'}
@@ -62,17 +63,18 @@
    #{/field}
   <tr>
     <td>&nbsp;</td>
-    <td align="right"> <input type="submit" value="Save Profile" />&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td align="left"> <br><input type="submit" value="Save Profile" />&nbsp;&nbsp;&nbsp;&nbsp;</td>
   </tr>
 </table>
  #{ifErrors}
  
-   <h1>Oops</h1>
- 
+   <h1>Oops!</h1>
+ <br>
+ <ul>
    #{errors}
-       <li>${error}</li>
+       <li class="error">${error}</li>
    #{/errors}
- 
+ </ul>
 #{/ifErrors}   
      </div>
 #{/form}

@@ -6,7 +6,8 @@
 GET     /                                       Secure.login
 GET     /profile                          		Profiles.form
 POST    /profile                          		Profiles.save
-
+# Media
+GET    /media                          		Medias.create
 # Ignore favicon requests
 GET     /favicon.ico                            404
 
