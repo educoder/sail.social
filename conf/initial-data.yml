@@ -62,18 +62,18 @@ TaskAssignment(taskAss):
     tasks: [t1, t2, t3]
     
 User(telsbotUser):
-    username: telsbot
-    password: secret
+    username: obama
+    password: obama
     taskAssignments: [taskAss]
     questionaireAssignments: [quesAss1]
     
 
 Profile(telsbotProfile):
     user: telsbotUser
-    firstname: tels J.
-    lastname: bot
-    description: profile of telsbot
-    status: I am telsbot
-    gender: female
-    phonenumber: 93428502
-    isComplete: false
+    firstname: Barry
+    lastname: Obama
+    description: profile of obama
+    status: I am obama
+    gender: male
+    phonenumber: 1800PREZUSA
+    isComplete: TRUE

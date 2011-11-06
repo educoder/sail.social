@@ -71,7 +71,7 @@ public class Security extends controllers.Secure.Security {
 		    	profile = new Profile(user, null, null).save();
 		    }
 
-		    profile.isComplete = false;
+		    //profile.isComplete = false;
 
 		    session.put("profile.id", profile.id);
 
