@@ -57,6 +57,21 @@ Task(t3):
     list: POST-VISIT
     done: true  
 
+Media(m1):
+    url: http://www.voxlumiere.com/wp-content/uploads/2011/08/robot.gif
+    mediaType: IMAGE
+    origin: obama
+    
+Media(m2):
+    url: http://obeygiant.com/images/2008/10/obama.jpg
+    mediaType: IMAGE
+    origin: obama
+
+Media(m3):
+    url: http://www.youtube.com/watch?v=jjXyqcx-mYY
+    mediaType: VIDEO
+    origin: obama
+
 TaskAssignment(taskAss):
     title: just assigned
     tasks: [t1, t2, t3]

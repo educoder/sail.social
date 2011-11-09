@@ -1,5 +1,10 @@
-<b>&{'homework'}</b>
-<br>
-<br>
-<p>&{'nohomework'}</p>
 
+<h2>&{'videos'}:</h2>
+<br>
+<ul>
+<ul>
+    #{list items: models.Media.findMediaByImage(), as: 'image'}
+    <li>url: ${image.url}</li>
+    #{/list}
+</ul>
+</ul>
